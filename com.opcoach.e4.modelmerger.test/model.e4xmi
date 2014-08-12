@@ -13,38 +13,37 @@
     <mainMenu xmi:id="_80HxnSFGEeSVAr1DhWhfjA" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_80HxniFGEeSVAr1DhWhfjA" label="File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxnyFGEeSVAr1DhWhfjA" label="Open" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/sample.png" command="_80HxlCFGEeSVAr1DhWhfjA"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoCFGEeSVAr1DhWhfjA" label="Save" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png" command="_80HxlyFGEeSVAr1DhWhfjA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoCFGEeSVAr1DhWhfjA" label="Save" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoSFGEeSVAr1DhWhfjA" label="Quit" command="_80HxkCFGEeSVAr1DhWhfjA"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_80HxoiFGEeSVAr1DhWhfjA" label="Help">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoyFGEeSVAr1DhWhfjA" label="About" command="_80HxmiFGEeSVAr1DhWhfjA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoyFGEeSVAr1DhWhfjA" label="About"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_80IYpCFGEeSVAr1DhWhfjA">
       <children xsi:type="menu:ToolBar" xmi:id="_80IYpSFGEeSVAr1DhWhfjA" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_80IYpiFGEeSVAr1DhWhfjA" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/sample.png" command="_80HxlCFGEeSVAr1DhWhfjA"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_80IYpyFGEeSVAr1DhWhfjA" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png" command="_80HxlyFGEeSVAr1DhWhfjA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_80IYpyFGEeSVAr1DhWhfjA" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png"/>
       </children>
     </trimBars>
   </children>
   <handlers xmi:id="_80HxkSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.quitCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.QuitHandler" command="_80HxkCFGEeSVAr1DhWhfjA"/>
   <handlers xmi:id="_80HxlSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.openCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.OpenHandler" command="_80HxlCFGEeSVAr1DhWhfjA"/>
-  <handlers xmi:id="_80HxmCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.saveCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.SaveHandler" command="_80HxlyFGEeSVAr1DhWhfjA"/>
-  <handlers xmi:id="_80HxmyFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.aboutCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.AboutHandler" command="_80HxmiFGEeSVAr1DhWhfjA"/>
+  <handlers xmi:id="_80HxmCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.saveCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.SaveHandler"/>
+  <handlers xmi:id="_80HxmyFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.aboutCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.AboutHandler"/>
   <bindingTables xmi:id="_80HxkiFGEeSVAr1DhWhfjA" bindingContext="_80HKiSFGEeSVAr1DhWhfjA">
     <bindings xmi:id="_80HxkyFGEeSVAr1DhWhfjA" keySequence="M1+Q" command="_80HxkCFGEeSVAr1DhWhfjA"/>
     <bindings xmi:id="_80HxliFGEeSVAr1DhWhfjA" keySequence="M1+O" command="_80HxlCFGEeSVAr1DhWhfjA"/>
-    <bindings xmi:id="_80HxmSFGEeSVAr1DhWhfjA" keySequence="M1+S" command="_80HxlyFGEeSVAr1DhWhfjA"/>
-    <bindings xmi:id="_80HxnCFGEeSVAr1DhWhfjA" keySequence="M1+A" command="_80HxmiFGEeSVAr1DhWhfjA"/>
+    <bindings xmi:id="_80HxmSFGEeSVAr1DhWhfjA" keySequence="M1+S"/>
+    <bindings xmi:id="_80HxnCFGEeSVAr1DhWhfjA" keySequence="M1+A"/>
   </bindingTables>
   <rootContext xmi:id="_80HKiSFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_80HKiiFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_80HKiyFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
-  <commands xmi:id="_80HxkCFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
-  <commands xmi:id="_80HxlCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.open" commandName="openCommand"/>
-  <commands xmi:id="_80HxlyFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
-  <commands xmi:id="_80HxmiFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_80HxkCFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.file.exit" commandName="Overriden Quit Command" description="Overriden"/>
+  <commands xmi:id="_80HxlCFGEeSVAr1DhWhfjA" elementId="com.opcoach.command.localWithCategory" commandName="Local Command with category" description="A local command  with category" category="_3pnoQCIaEeS_L88kIZXSPA"/>
+  <commands xmi:id="_hJGKMCIxEeS_L88kIZXSPA" elementId="com.opcoach.command.local" commandName="Local Command" description="A local command"/>
   <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

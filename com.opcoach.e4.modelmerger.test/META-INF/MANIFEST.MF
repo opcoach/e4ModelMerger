@@ -14,5 +14,6 @@ Require-Bundle: org.junit;bundle-version="4.11.0",
  javax.annotation,
  org.eclipse.e4.core.services,
  javax.inject,
- org.eclipse.e4.ui.workbench.swt;bundle-version="0.12.100"
+ org.eclipse.e4.ui.workbench.swt;bundle-version="0.12.100",
+ org.eclipse.e4.ui.model.workbench
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
