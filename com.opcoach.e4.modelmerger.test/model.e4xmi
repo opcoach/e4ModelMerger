@@ -53,4 +53,5 @@
   <addons xmi:id="_80HKhyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
   <addons xmi:id="_80HKiCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
   <addons xmi:id="_ilztsCIOEeS_L88kIZXSPA" elementId="com.opcoach.e4.modelmerger.test.addon.1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.addons.AdditionalAddon"/>
+  <categories xmi:id="_3pnoQCIaEeS_L88kIZXSPA" elementId="com.opcoach.e4.modelmerger.test.modelCategory" name="Model Category" description="Model Category"/>
 </application:Application>

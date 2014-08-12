@@ -52,4 +52,5 @@
   <addons xmi:id="_80HKhiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_80HKhyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
   <addons xmi:id="_80HKiCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <categories xmi:id="_zIb8ECIaEeS_L88kIZXSPA" elementId="com.opcoach.e4.modelmerger.test.masterCategory" name="Master" description="Master"/>
 </application:Application>

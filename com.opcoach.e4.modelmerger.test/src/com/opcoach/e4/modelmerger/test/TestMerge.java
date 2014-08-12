@@ -6,12 +6,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.ui.internal.workbench.E4XMIResourceFactory;
 import org.eclipse.e4.ui.internal.workbench.swt.E4Application;
 import org.eclipse.e4.ui.model.application.MAddon;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
@@ -32,6 +34,7 @@ public class TestMerge {
 
 	// IDs for the objects merged from model to master.
 	private static final String ADDON_ID = "com.opcoach.e4.modelmerger.test.addon.1";
+	private static final String CATEGORY_ID = "com.opcoach.e4.modelmerger.test.modelCategory";
 	
 	
 	
@@ -134,7 +137,7 @@ public class TestMerge {
 	public void testAddonMerge() {
 		
 		int nbAddonInMaster = master.getAddons().size();
-		boolean found = searchAddonInMaster(master,ADDON_ID);
+		boolean found = searchElementById(master.getAddons(),ADDON_ID);
 
 		assertFalse("The model addon must not be in master", found);
 		
@@ -147,23 +150,47 @@ public class TestMerge {
 		
 		// search for the added addon in master.
 		
-		found = searchAddonInMaster(master, ADDON_ID);
+		found = searchElementById(master.getAddons(), ADDON_ID);
 		assertTrue("The model addon must now be in master", found);
   
-		found = searchAddonInMaster(model, ADDON_ID);
+		found = searchElementById(model.getAddons(), ADDON_ID);
 		assertTrue("The model addon must always be in the source model", found);
   
 	
 	}
 
-	private boolean searchAddonInMaster(MApplication m, String addonId) {
+	
+	private boolean searchElementById(List<?> list, String id) {
 		boolean found = false;
-		for (MAddon a : m.getAddons())
+		for (Object o : list)
 		{
-			found = addonId.equals(a.getElementId());
+			found =  (o instanceof MApplicationElement) && id.equals(((MApplicationElement)o).getElementId());
 			if (found) break;
 		}
 		return found;
+	}
+
+	@Test
+	public void testMergeCategories()
+	{
+		int nbCategoriesInMaster = master.getCategories().size();
+		
+		merger.mergeCommandCategories(master, model);
+		
+		// The category in the model must still be there
+		// A clone of this category must be in the master model. 
+		// Duplicated category in model must not be in master model. 
+		assertEquals("There must be " + nbCategoriesInMaster+1 + " categories in master", master.getCategories().size(), nbCategoriesInMaster+1);
+		
+		// search for the added addon in master.
+		
+		boolean found = searchElementById(master.getCategories(), CATEGORY_ID);
+		assertTrue("The model category must now be in master", found);
+  
+		found = searchElementById(model.getCategories(), CATEGORY_ID);
+		assertTrue("The model category must always be in the source model", found);
+  
+		
 	}
 
 }
