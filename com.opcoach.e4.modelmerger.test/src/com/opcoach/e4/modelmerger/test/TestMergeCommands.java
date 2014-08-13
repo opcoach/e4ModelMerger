@@ -59,21 +59,21 @@ public class TestMergeCommands extends TestMerge
 	}
 
 	@Test
-	public void testMergeLocalCommandWithCategory()
+	public void testMergeLocalCommandWithLocalCategory()
 	{
 		MCommand cmd = (MCommand) searchElementById(master.getCommands(), CMD_LOCAL_WITH_CAT_ID);
-		assertNull("Master model must not contain the local command with cat" + CMD_LOCAL_WITH_CAT_ID, cmd);
-		assertNotNull("Local model must contain the local command with cat " + CMD_LOCAL_WITH_CAT_ID,
+		assertNull("Master model must not contain the local command with category : " + CMD_LOCAL_WITH_CAT_ID, cmd);
+		assertNotNull("Local model must contain the local command with category : " + CMD_LOCAL_WITH_CAT_ID,
 				searchElementById(model.getCommands(), CMD_LOCAL_WITH_CAT_ID));
 
 		merger.mergeModels(master, model);
 
 		// The local command in master must now exist.
 		cmd = (MCommand) searchElementById(master.getCommands(), CMD_LOCAL_WITH_CAT_ID);
-		assertNotNull("Master model must now contain the local command with cat" + CMD_LOCAL_WITH_CAT_ID, cmd);
+		assertNotNull("Master model must now contain the local command with category : " + CMD_LOCAL_WITH_CAT_ID, cmd);
 		MCategory cat = cmd.getCategory();
 		MCategory masterCat = (MCategory) searchElementById(master.getCategories(), TestMergeCategories.CATEGORY_ID);
-		assertEquals("Category of added command must be in master model", cat == masterCat);
+		assertEquals("Category of added command must be the same than in master model", cat, masterCat);
 	}
 
 }
