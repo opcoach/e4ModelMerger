@@ -82,7 +82,7 @@ public class E4ModelMerger
 	{
 		for (MCommand cmd : model.getCommands())
 		{
-			MCommand masterCmd = (MCommand) searchInList(master.getCommands(),cmd.getElementId());
+			MCommand masterCmd = (MCommand) searchInList(master.getCommands(), cmd.getElementId());
 			if (masterCmd == null)
 			{
 				// Can add this command in master model after clone
@@ -92,9 +92,51 @@ public class E4ModelMerger
 			{
 				// The command exists, must merge sub model data in the master
 				// command
-				copyAndbind(cmd, masterCmd, master);
+				// But must also check if commands have same content (nb of
+				// parameters for instance).
+				if (checkCompliance(cmd, masterCmd))
+					copyAndbind(cmd, masterCmd, master);
 			}
 		}
+	}
+
+	/**
+	 * This method check if two objects are compliant to be merged.
+	 * 
+	 * @Exception throws a mergeException if something is wrong.
+	 * */
+	private boolean checkCompliance(MCommand cmd, MCommand masterCmd)
+	{
+		// Check nb of parameters
+		if (cmd.getParameters().size() != masterCmd.getParameters().size())
+			throw new E4ModelMergeException(cmd, masterCmd, "The two commands have not the same number of parameters");
+
+		// Then, check if parameters have the same ids.
+		for (int i = 0; i < cmd.getParameters().size(); i++)
+		{
+			MCommandParameter p1 = cmd.getParameters().get(i);
+			MCommandParameter p2 = masterCmd.getParameters().get(i);
+
+			String p1ID = p1.getElementId();
+			String p2ID = p2.getElementId();
+
+			// CHeck non null parameters
+			if ((p1ID == null) || (p2ID == null))
+				throw new E4ModelMergeException(p1, p2, "Parameters must have a non null ID to be merged");
+
+			// Check similar IDs in each command 
+			if (!p1ID.equals(p2ID))
+				throw new E4ModelMergeException(p1, p2,
+						"parameters must have the same IDs in master command to be merged");
+
+		}
+
+		return true;
+	}
+
+	private boolean checkAllNullOrEquals(String s1, String s2)
+	{
+		return ((s1 == null) && (s2 == null)) || ((s1 != null) && s1.equals(s2)) || ((s2 != null) && s2.equals(s1));
 	}
 
 	public boolean isIdInlist(List<?> eltList, String id)
@@ -186,7 +228,7 @@ public class E4ModelMerger
 
 		return result;
 	}
-	
+
 	public void copyAndbind(MCommand source, MCommand target, MApplication master)
 	{
 		// Clone step
@@ -195,7 +237,7 @@ public class E4ModelMerger
 		target.setDescription(source.getDescription());
 		target.setCommandName(source.getCommandName());
 
-		// Add the parameters is any
+		// Add the parameters if any
 		for (MCommandParameter p : source.getParameters())
 		{
 			MCommandParameter cp = cloneAndBind(p, master);
@@ -210,7 +252,6 @@ public class E4ModelMerger
 		}
 
 	}
-
 
 	/**
 	 * This clone and bind method clones a source Parameter and bind it to the

@@ -1,17 +1,11 @@
 package com.opcoach.e4.modelmerger.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.ui.internal.workbench.E4XMIResourceFactory;
 import org.eclipse.e4.ui.internal.workbench.swt.E4Application;
-import org.eclipse.e4.ui.model.application.MAddon;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
@@ -26,33 +20,32 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import com.opcoach.e4.modelmerger.E4ModelMerger;
 
+/** The parent class for all tests. It initializes the 2 models (master and model) for test */
 public class TestMerge
 {
 
-	// IDs for the objects merged from model to master.
-	private static final String ADDON_ID = "com.opcoach.e4.modelmerger.test.addon.1";
-	private static final String CATEGORY_ID = "com.opcoach.e4.modelmerger.test.modelCategory";
-
-	/** The master model into merge is done */
+	/** The master model into merge is done (ie, the future main application model) */
 	protected MApplication master;
+	
 	/** the source model to be merged in master (ie, the future fragment) */
-
 	protected MApplication model;
 
-	private ResourceSetImpl resourceSetImpl;
 
 	protected E4ModelMerger merger;
 	protected EModelService ms;
+	
+	
+	private ResourceSetImpl resourceSetImpl;
 
 	public TestMerge()
 	{
 		init();
 	}
 
+	/** Create the master and model with their appropriate contexts */
 	@SuppressWarnings("restriction")
 	@Before
 	public void setUp() throws Exception
@@ -71,7 +64,9 @@ public class TestMerge
 
 	}
 
-	private MApplication loadModel(String localPath)
+	
+	/** Load a model in the current plugin fragment */
+	protected MApplication loadModel(String localPath)
 	{
 
 		MApplication result = null;

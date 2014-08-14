@@ -45,6 +45,9 @@
   <commands xmi:id="_80HxlCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.open" commandName="openCommand"/>
   <commands xmi:id="_80HxlyFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_80HxmiFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_kxTMYCOkEeSLwfZ0Ss0duQ" elementId="com.opcoach.command.cmdWithDiffParameters" commandName="Command with diff parameters" description="To test a merge with same command ID but differente parameters number">
+    <parameters xmi:id="_pmYE8COkEeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter.0" name="Command Parameter 0"/>
+  </commands>
   <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

@@ -48,6 +48,10 @@
     <parameters xmi:id="_hoxP0COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter1" name="Param1" typeId="param1.typeID" optional="false"/>
     <parameters xmi:id="_l9ud4COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter2" name="Param2" typeId="param2.typeID"/>
   </commands>
+  <commands xmi:id="_rv0dsCOkEeSLwfZ0Ss0duQ" elementId="com.opcoach.command.cmdWithDiffParameters" commandName="Command with diff parameters" description="To test a merge with same command ID but differente parameters number">
+    <parameters xmi:id="_rv0dsSOkEeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter.0" name="Command Parameter 0"/>
+    <parameters xmi:id="_srHoUCOkEeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter.1" name="Command Parameter 1"/>
+  </commands>
   <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
