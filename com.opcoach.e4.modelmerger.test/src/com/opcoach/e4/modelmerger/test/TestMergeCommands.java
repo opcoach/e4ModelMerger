@@ -136,10 +136,17 @@ public class TestMergeCommands extends TestMerge
 		assertNotNull("Local model must contain the local command with parameters : " + CMD_WITH_DIFFERENT_PARAMS_ID,
 				searchElementById(model.getCommands(), CMD_WITH_DIFFERENT_PARAMS_ID));
 
-		merger.mergeModels(master, model);
-
 		// It must throw an exception : the two commands exists in both model, but nb of parameter is different. 
-
+		// Get it to check message.
+		try
+		{
+		merger.mergeModels(master, model);
+		}
+		catch (E4ModelMergeException ex)
+		{
+		   System.out.println(ex.getMessage());
+		   throw ex;
+		}
 	}
 
 }

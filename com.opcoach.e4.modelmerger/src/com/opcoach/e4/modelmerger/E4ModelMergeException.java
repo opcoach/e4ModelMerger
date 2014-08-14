@@ -27,9 +27,10 @@ public class E4ModelMergeException extends RuntimeException
 		try
 		{
 
-			f.format("%15s%30s%30s\n", " ", "Target Object", "Source Object")
-					.format("%15s%30s%30s\n", " Class ", target.getClass().getName(), source.getClass().getName())
-					.format("%15s%30s%30s\n", "Id", target.getElementId(), source.getElementId());
+			f.format("\n%15s%-80s%-80s\n", " ", "Target Object", "Source Object")
+			.format("%15s%-80s%-80s\n", " ", "-------------",  "-------------")
+					.format("%-15s%-80s%-80s\n", "Class ", target.getClass().getTypeName(), source.getClass().getTypeName())
+					.format("%-15s%-80s%-80s\n", "Id ", target.getElementId(), source.getElementId());
 
 			return super.getMessage() + "\n" + f.toString();
 		} finally
