@@ -48,6 +48,7 @@
   <commands xmi:id="_kxTMYCOkEeSLwfZ0Ss0duQ" elementId="com.opcoach.command.cmdWithDiffParameters" commandName="Command with diff parameters" description="To test a merge with same command ID but differente parameters number">
     <parameters xmi:id="_pmYE8COkEeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter.0" name="Command Parameter 0"/>
   </commands>
+  <commands xmi:id="_78GhMCR3EeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.paste" commandName="Paste"/>
   <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

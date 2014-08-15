@@ -31,6 +31,8 @@
   <handlers xmi:id="_80HxlSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.openCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.OpenHandler" command="_80HxlCFGEeSVAr1DhWhfjA"/>
   <handlers xmi:id="_80HxmCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.saveCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.SaveHandler"/>
   <handlers xmi:id="_80HxmyFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.aboutCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.AboutHandler"/>
+  <handlers xmi:id="_FZbQ4CRwEeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.copy.handler1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.handlers.LocalCopyHandler" command="_CnDP4CRwEeSLwfZ0Ss0duQ"/>
+  <handlers xmi:id="__CitsCR3EeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.paste.handler1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.handlers.LocalPasteHandler" command="_AF3y8CR4EeSLwfZ0Ss0duQ"/>
   <bindingTables xmi:id="_80HxkiFGEeSVAr1DhWhfjA" bindingContext="_80HKiSFGEeSVAr1DhWhfjA">
     <bindings xmi:id="_80HxkyFGEeSVAr1DhWhfjA" keySequence="M1+Q" command="_80HxkCFGEeSVAr1DhWhfjA"/>
     <bindings xmi:id="_80HxliFGEeSVAr1DhWhfjA" keySequence="M1+O" command="_80HxlCFGEeSVAr1DhWhfjA"/>
@@ -48,6 +50,8 @@
     <parameters xmi:id="_hoxP0COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter1" name="Param1" typeId="param1.typeID" optional="false"/>
     <parameters xmi:id="_l9ud4COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter2" name="Param2" typeId="param2.typeID"/>
   </commands>
+  <commands xmi:id="_CnDP4CRwEeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.copy" commandName="Copy" description="generic copy command"/>
+  <commands xmi:id="_AF3y8CR4EeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.paste" commandName="Paste"/>
   <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

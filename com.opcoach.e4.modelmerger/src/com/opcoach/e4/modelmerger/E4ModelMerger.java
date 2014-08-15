@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.model.application.MAddon;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
@@ -12,20 +13,30 @@ import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MCategory;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MCommandParameter;
+import org.eclipse.e4.ui.model.application.commands.MHandler;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 
+/**
+ * This class merges a model into a master model. It applies the rules of merge
+ * described in the doc/*.odt document
+ */
 public class E4ModelMerger
 {
 
 	@Inject
 	EModelService ms;
 
+	@Inject
+	Logger log;
+
 	public void mergeModels(MApplication master, MApplication model)
 	{
 		mergeAddons(master, model);
 		mergeCommandCategories(master, model); // Categories are used by
 												// commands.
-		mergeCommands(master, model);
+		mergeCommands(master, model); // Commands are used by handlers and
+										// bindings
+		mergeHandlers(master, model);
 	}
 
 	/**
@@ -101,6 +112,37 @@ public class E4ModelMerger
 	}
 
 	/**
+	 * Merging handlers must : Check if handler d is not present in master model
+	 * (ID checking) If not, add this handler in the model If present, override
+	 * the handler data with the sub model and check compliance
+	 * 
+	 * @param master
+	 * @param model
+	 */
+	public void mergeHandlers(MApplication master, MApplication model)
+	{
+		for (MHandler hdl : model.getHandlers())
+		{
+			MHandler masterHdl = (MHandler) searchInList(master.getHandlers(), hdl.getElementId());
+			if (masterHdl == null)
+			{
+				// Can add this command in master model after clone
+				MHandler cHdl = cloneAndBind(hdl, master);
+				master.getHandlers().add(cHdl);
+			} else
+			{
+				// The handler alreday exists with this ID, must merge sub model
+				// data in the master
+				// But inform user with a info message.
+				log.info("The handler (id ='" + hdl.getElementId() + "') in model fragment (id='"
+						+ hdl.getContributorURI() + "') already exist in master model. Data will be overriden ");
+
+				copyAndBind(hdl, masterHdl, master);
+			}
+		}
+	}
+
+	/**
 	 * This method check if two objects are compliant to be merged.
 	 * 
 	 * @Exception throws a mergeException if something is wrong.
@@ -124,7 +166,7 @@ public class E4ModelMerger
 			if ((p1ID == null) || (p2ID == null))
 				throw new E4ModelMergeException(p1, p2, "Parameters must have a non null ID to be merged");
 
-			// Check similar IDs in each command 
+			// Check similar IDs in each command
 			if (!p1ID.equals(p2ID))
 				throw new E4ModelMergeException(p1, p2,
 						"parameters must have the same IDs in master command to be merged");
@@ -277,6 +319,57 @@ public class E4ModelMerger
 		// Binding step (no binding for parameters).
 
 		return result;
+
+	}
+
+	/**
+	 * This clone and bind method clones a source Handler and bind it to the
+	 * master objects
+	 * 
+	 * @param source
+	 *            the source handler to be cloned
+	 * @param master
+	 *            the master model where bounded data should be found (may be
+	 *            none)
+	 * @return
+	 */
+	public MHandler cloneAndBind(MHandler source, MApplication master)
+	{
+		// Clone step
+		MHandler result = ms.createModelElement(MHandler.class);
+		copyAndBind(source, result, master);
+
+		return result;
+
+	}
+
+	public void copyAndBind(MHandler source, MHandler target, MApplication master)
+	{
+		// Clone step
+		copyContributionData(source, target);
+
+		// Binding step (must bind commands found in the model).
+		if (source.getCommand() != null)
+		{
+			MCommand cmd = (MCommand) searchInList(master.getCommands(), source.getCommand().getElementId());
+			if (cmd != null)
+			{
+				// Ok, we can bind !
+				target.setCommand(cmd);
+			} else
+			{
+				// Hmmm there is an handler without command found in master ->
+				// Merge Exception
+				throw new E4ModelMergeException(source, target,
+						"The command bound in source does not exist in master model ");
+			}
+		} else
+		{
+			// There is an handler, but no command defined inside --> Just log a
+			// warning
+			log.warn("The handler (id ='" + source.getElementId() + "') in model fragment (id='"
+					+ source.getContributorURI() + "') is not bound to a command ");
+		}
 
 	}
 
