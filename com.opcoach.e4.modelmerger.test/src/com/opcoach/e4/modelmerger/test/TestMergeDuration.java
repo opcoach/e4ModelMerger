@@ -15,7 +15,7 @@ public class TestMergeDuration extends TestMerge {
 		long end = System.currentTimeMillis();
 		
 		System.out.println("Merge duration is : " + (end-start) + " ms");
-		assertTrue("Merge must be done in less than 10 ms ", ((end-start) <= 10));
+		assertTrue("Merge must be done in less than 20 ms but is : " + (end-start) + "ms", ((end-start) <= 20));
 	}
 
 

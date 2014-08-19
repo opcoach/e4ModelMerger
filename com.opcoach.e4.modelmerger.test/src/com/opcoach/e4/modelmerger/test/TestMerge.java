@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.internal.workbench.E4XMIResourceFactory;
+import org.eclipse.e4.ui.internal.workbench.ModelAssembler;
 import org.eclipse.e4.ui.internal.workbench.swt.E4Application;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
@@ -55,8 +57,6 @@ public class TestMerge
 		master = loadModel("master.e4xmi");
 		model = loadModel("model.e4xmi");
 
-		master.setContext(E4Application.createDefaultContext());
-		model.setContext(E4Application.createDefaultContext());
 
 		merger = ContextInjectionFactory.make(E4ModelMerger.class, master.getContext());
 
@@ -78,6 +78,15 @@ public class TestMerge
 
 			resource.load(null);
 			result = (MApplication) resource.getContents().get(0);
+			
+			IEclipseContext defaultContext = E4Application.createDefaultContext();
+			result.setContext(defaultContext);
+			defaultContext.set(MApplication.class, result);
+
+			/*ModelAssembler contribProcessor = ContextInjectionFactory.make(ModelAssembler.class,
+					defaultContext);
+			contribProcessor.processModel(true);
+			 */
 
 		} catch (IOException e)
 		{
