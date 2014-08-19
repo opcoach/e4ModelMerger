@@ -1,5 +1,6 @@
 package com.opcoach.e4.modelmerger;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,10 @@ public class E4ModelMerger
 
 	@Inject
 	Logger log;
+	
+	// A private cache to find data when rebinding...
+	// It contains only objects from the master model
+	private Map<String, MApplicationElement> cache = new HashMap<String, MApplicationElement>();
 
 	public void mergeModels(MApplication master, MApplication model)
 	{
@@ -81,6 +86,8 @@ public class E4ModelMerger
 				master.getCategories().add(cCat);
 			}
 		}
+		
+		fillCache(master.getCategories());
 	}
 
 	/**
@@ -111,6 +118,9 @@ public class E4ModelMerger
 					copyAndBind(cmd, masterCmd, master);
 			}
 		}
+		
+		fillCache(master.getCommands());
+
 	}
 
 	/**
@@ -142,6 +152,9 @@ public class E4ModelMerger
 				copyAndBind(hdl, masterHdl, master);
 			}
 		}
+		
+		fillCache(master.getHandlers());
+
 	}
 	
 	/**
@@ -170,6 +183,16 @@ public class E4ModelMerger
 				copyAndBind(bct, masterCtx, master);
 			}
 		}
+		
+		for (MBindingContext bct : master.getBindingContexts())
+			fillBindingContextCache(bct);
+	}
+	
+	private void fillBindingContextCache(MBindingContext bc)
+	{
+		cache.put(bc.getElementId(), bc);
+		for (MBindingContext child : bc.getChildren())
+			fillBindingContextCache(child);
 	}
 
 
@@ -224,7 +247,7 @@ public class E4ModelMerger
 		for (Object e : eltList)
 		{
 			MApplicationElement ae = (MApplicationElement) e;
-			if ((e instanceof MApplicationElement) && ae.getElementId().equals(id))
+			if (ae.getElementId().equals(id))
 			{
 				result = ae;
 				break;
@@ -232,6 +255,17 @@ public class E4ModelMerger
 		}
 		return result;
 	}
+
+	/** Fill a local cache with the objects contained in the list */
+	private void fillCache(List<?> eltList)
+	{
+		for (Object e : eltList)
+		{
+			MApplicationElement ae = (MApplicationElement) e;
+			cache.put(ae.getElementId(), ae);
+		}
+	}
+
 
 	/**
 	 * This clone and bind method clones a source Addon and bind it to the
@@ -434,7 +468,7 @@ public class E4ModelMerger
 		// Binding step (must bind commands found in the model).
 		if (source.getCommand() != null)
 		{
-			MCommand cmd = (MCommand) searchInList(master.getCommands(), source.getCommand().getElementId());
+			MCommand cmd = (MCommand) cache.get(source.getCommand().getElementId());
 			if (cmd != null)
 			{
 				// Ok, we can bind !
