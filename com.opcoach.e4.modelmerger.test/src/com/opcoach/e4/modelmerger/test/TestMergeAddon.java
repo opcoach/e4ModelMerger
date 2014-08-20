@@ -28,7 +28,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.opcoach.e4.modelmerger.E4ModelMerger;
+import com.opcoach.e4.modelmerger.impl.E4ModelMerger;
 
 public class TestMergeAddon extends TestMerge {
 

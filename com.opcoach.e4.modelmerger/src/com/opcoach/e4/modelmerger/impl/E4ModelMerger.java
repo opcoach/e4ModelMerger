@@ -1,5 +1,6 @@
-package com.opcoach.e4.modelmerger;
+package com.opcoach.e4.modelmerger.impl;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +22,14 @@ import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
 import org.eclipse.e4.ui.model.application.commands.MParameter;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 
+import com.opcoach.e4.modelmerger.E4ModelMergeException;
+import com.opcoach.e4.modelmerger.EModelMerger;
+
 /**
  * This class merges a model into a master model. It applies the rules of merge
  * described in the doc/*.odt document
  */
-public class E4ModelMerger
+public class E4ModelMerger  extends E4ModelLoaderImpl implements EModelMerger
 {
 
 	@Inject
@@ -658,5 +662,11 @@ public class E4ModelMerger
 		// Copy ancestor data
 		copyApplicationData(source, target);
 		target.setContributionURI(source.getContributionURI());
+	}
+
+	@Override
+	public void mergeModels(MApplication master, String modelPath)
+	{
+		mergeModels(master, loadModel(modelPath));
 	}
 }

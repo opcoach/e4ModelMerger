@@ -129,7 +129,7 @@ public class TestMergeCommands extends TestMerge
 		// In fragment we have a command with not the same number of parameters
 		// than in command found in master, while ID of commands are the same.
 
-		model = loadModel("modelWithUncompliantCmdParameters.e4xmi");
+		model = merger.loadModel("com.opcoach.e4.modelmerger.test/modelWithUncompliantCmdParameters.e4xmi");
 		
 		assertNotNull("Master model must  contain the local command with parameters : " + CMD_WITH_DIFFERENT_PARAMS_ID,
 				searchElementById(master.getCommands(), CMD_WITH_DIFFERENT_PARAMS_ID));
