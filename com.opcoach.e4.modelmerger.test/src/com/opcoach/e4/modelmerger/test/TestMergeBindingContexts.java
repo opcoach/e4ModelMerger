@@ -35,15 +35,15 @@ import com.opcoach.e4.modelmerger.E4ModelMerger;
 public class TestMergeBindingContexts extends TestMerge {
 
 	// IDs for the objects merged from model to master.
-	private static final String BINDING_CTX_MAIN_ID = "org.eclipse.ui.contexts.dialogAndWindow";
-	private static final String BINDING_CTX_WINDOW_ID = "org.eclipse.ui.contexts.window";
-	private static final String BINDING_CTX_DIALOG_ID = "org.eclipse.ui.contexts.dialog";
+	 static final String BINDING_CTX_MAIN_ID = "org.eclipse.ui.contexts.dialogAndWindow";
+	 static final String BINDING_CTX_WINDOW_ID = "org.eclipse.ui.contexts.window";
+	 static final String BINDING_CTX_DIALOG_ID = "org.eclipse.ui.contexts.dialog";
 	
 	// This context is added in local in the dialog context (as a child of BINDING_CTX_DIALOG_ID)
-	private static final String BINDING_CTX_LOCAL_WIZARD_ID = "com.opcoach.e4.modelmerger.test.wizardContext";
+	 static final String BINDING_CTX_LOCAL_WIZARD_ID = "com.opcoach.e4.modelmerger.test.wizardContext";
 	
 	// This context is added in local in the dialog context (as a sibling of BINDING_CTX_WINDOW_ID)
-	private static final String BINDING_CTX_LOCAL_IN_OTHER_ID = "com.opcoach.e4.modelmerger.test.inOther";
+	 static final String BINDING_CTX_LOCAL_IN_OTHER_ID = "com.opcoach.e4.modelmerger.test.inOther";
 	
 	// This context is added in local as a top level context (sibling of BINDING_CTX_MAIN_ID)
 //	private static final String BINDING_CTX_LOCAL_ID = "com.opcoach.e4.modelmerger.test.localBindingContext";

@@ -12,10 +12,13 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MBindingContext;
+import org.eclipse.e4.ui.model.application.commands.MBindingTable;
 import org.eclipse.e4.ui.model.application.commands.MCategory;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MCommandParameter;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
+import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
+import org.eclipse.e4.ui.model.application.commands.MParameter;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 
 /**
@@ -30,7 +33,7 @@ public class E4ModelMerger
 
 	@Inject
 	Logger log;
-	
+
 	// A private cache to find data when rebinding...
 	// It contains only objects from the master model
 	private Map<String, MApplicationElement> cache = new HashMap<String, MApplicationElement>();
@@ -44,6 +47,7 @@ public class E4ModelMerger
 										// bindings
 		mergeHandlers(master, model);
 		mergeBindingContexts(master, model);
+		mergeBindingTable(master, model);
 	}
 
 	/**
@@ -86,7 +90,7 @@ public class E4ModelMerger
 				master.getCategories().add(cCat);
 			}
 		}
-		
+
 		fillCache(master.getCategories());
 	}
 
@@ -118,7 +122,7 @@ public class E4ModelMerger
 					copyAndBind(cmd, masterCmd, master);
 			}
 		}
-		
+
 		fillCache(master.getCommands());
 
 	}
@@ -152,18 +156,19 @@ public class E4ModelMerger
 				copyAndBind(hdl, masterHdl, master);
 			}
 		}
-		
+
 		fillCache(master.getHandlers());
 
 	}
-	
+
 	/**
-	 * Merging binding contexts must : Check if binding context is not present in master model
-	 * (ID checking) If not, add this binding context in the model 
-	 * If present, override  the binding context data with the sub model
-	 * Warning : a binding context can contain sub context -> we must detect if merge is compliant
-	 *  and deep clone the object. 
-	 *  Then we must check if a context is already present in master model but with a different parent...
+	 * Merging binding contexts must : Check if binding context is not present
+	 * in master model (ID checking) If not, add this binding context in the
+	 * model If present, override the binding context data with the sub model
+	 * Warning : a binding context can contain sub context -> we must detect if
+	 * merge is compliant and deep clone the object. Then we must check if a
+	 * context is already present in master model but with a different parent...
+	 * 
 	 * @param master
 	 * @param model
 	 */
@@ -174,20 +179,22 @@ public class E4ModelMerger
 			MBindingContext masterCtx = (MBindingContext) searchInList(master.getBindingContexts(), bct.getElementId());
 			if (masterCtx == null)
 			{
-				// Can add this binding context in master model after deep clone...
+				// Can add this binding context in master model after deep
+				// clone...
 				MBindingContext cCtx = cloneAndBind(bct, master);
 				master.getBindingContexts().add(cCtx);
 			} else
 			{
-				// The binding context already exists, must merge sub model data and all the children
+				// The binding context already exists, must merge sub model data
+				// and all the children
 				copyAndBind(bct, masterCtx, master);
 			}
 		}
-		
+
 		for (MBindingContext bct : master.getBindingContexts())
 			fillBindingContextCache(bct);
 	}
-	
+
 	private void fillBindingContextCache(MBindingContext bc)
 	{
 		cache.put(bc.getElementId(), bc);
@@ -195,6 +202,36 @@ public class E4ModelMerger
 			fillBindingContextCache(child);
 	}
 
+	/**
+	 * Merging binding tables must : Check if binding table is not present in
+	 * master model (ID checking) If not, add this binding table in the model
+	 * with all of its children If present, override the binding table data with
+	 * the sub model
+	 * 
+	 * @param master
+	 * @param model
+	 */
+	public void mergeBindingTable(MApplication master, MApplication model)
+	{
+		for (MBindingTable bt : model.getBindingTables())
+		{
+			MBindingTable masterBt = (MBindingTable) searchInList(master.getBindingTables(), bt.getElementId());
+			if (masterBt == null)
+			{
+				// Can add this binding table in master model after deep
+				// clone...
+				MBindingTable cbt = cloneAndBind(bt, master);
+				master.getBindingTables().add(cbt);
+			} else
+			{
+				// The binding context already exists, must merge sub model data
+				// and all the children
+				copyAndBind(bt, masterBt, master);
+			}
+		}
+
+		fillCache(master.getBindingTables());
+	}
 
 	/**
 	 * This method check if two objects are compliant to be merged.
@@ -247,7 +284,7 @@ public class E4ModelMerger
 		for (Object e : eltList)
 		{
 			MApplicationElement ae = (MApplicationElement) e;
-			if (ae.getElementId().equals(id))
+			if ( (ae.getElementId()!=null) && (ae.getElementId().equals(id)))
 			{
 				result = ae;
 				break;
@@ -265,7 +302,6 @@ public class E4ModelMerger
 			cache.put(ae.getElementId(), ae);
 		}
 	}
-
 
 	/**
 	 * This clone and bind method clones a source Addon and bind it to the
@@ -386,6 +422,22 @@ public class E4ModelMerger
 		return result;
 
 	}
+	
+	public MParameter cloneAndBind(MParameter source, MApplication master)
+	{
+		// Clone step
+		MParameter result = ms.createModelElement(MParameter.class);
+		copyApplicationData(source, result);
+
+		result.setValue(source.getValue());
+		result.setName(source.getName());
+
+		// Binding step (no binding for parameters).
+
+		return result;
+
+	}
+
 
 	/**
 	 * This clone and bind method clones a source Handler and bind it to the
@@ -407,7 +459,7 @@ public class E4ModelMerger
 		return result;
 
 	}
-	
+
 	/**
 	 * This clone and bind method clones a binding context and bind it to the
 	 * master objects. This is a deep clone, and it clones also the children.
@@ -428,6 +480,7 @@ public class E4ModelMerger
 
 	}
 	
+
 	public void copyAndBind(MBindingContext source, MBindingContext target, MApplication master)
 	{
 		// Clone step
@@ -435,30 +488,110 @@ public class E4ModelMerger
 
 		target.setName(source.getName());
 		target.setDescription(source.getDescription());
-		
+
 		// Copy or clone also the children depending of already in master
 		for (MBindingContext child : source.getChildren())
 		{
 			MBindingContext targetBC = (MBindingContext) searchInList(target.getChildren(), child.getElementId());
-			
+
 			if (targetBC != null)
 			{
-				// There is already a child with the same ID, must just continue to copy
+				// There is already a child with the same ID, must just continue
+				// to copy
 				copyAndBind(child, targetBC, master);
-			}
-			else
+			} else
 			{
-				 // There is no existing children in master.. must clone and add
+				// There is no existing children in master.. must clone and add
 				MBindingContext cc = cloneAndBind(child, master);
 				target.getChildren().add(cc);
 			}
 		}
-		
+
 		// Binding step (no objects binding for binding context).
 
 	}
+	
+	/**
+	 * This clone and bind method clones a binding table and bind it to the
+	 * master objects (binding contexts and commands for its children. 
+	 * This is a deep clone, and it clones also the children.
+	 * 
+	 * @param source
+	 *            the source object to be cloned
+	 * @param master
+	 *            the master model where bounded data should be found (may be
+	 *            none)
+	 * @return
+	 */
+	public MBindingTable cloneAndBind(MBindingTable source, MApplication master)
+	{
+		MBindingTable result = ms.createModelElement(MBindingTable.class);
+		copyAndBind(source, result, master);
+
+		return result;
+
+	}
+	
+	public MKeyBinding cloneAndBind(MKeyBinding source, MApplication master)
+	{
+		MKeyBinding result = ms.createModelElement(MKeyBinding.class);
+		copyAndBind(source, result, master);
+
+		return result;
+
+	}
+	
+	
+	public void copyAndBind(MBindingTable source, MBindingTable target, MApplication master)
+	{
+		// Clone step
+		copyApplicationData(source, target);
+
+		// Copy or clone also the children depending of already in master
+		for (MKeyBinding child : source.getBindings())
+		{
+			MKeyBinding targetKb = (MKeyBinding) searchInList(target.getBindings(), child.getElementId());
+
+			if (targetKb != null)
+			{
+				// There is already a child with the same ID, must just continue
+				// to copy
+				copyAndBind(child, targetKb, master);
+			} else
+			{
+				// There is no existing children in master.. must clone and add
+				MKeyBinding ckb = cloneAndBind(child, master);
+				target.getBindings().add(ckb);
+			}
+		}
+
+		// Binding step (Must bind the table to the corresponding binding context).
+		MBindingContext bc = (MBindingContext) cache.get(source.getBindingContext().getElementId());
+		target.setBindingContext(bc);
+	}
+
+	public void copyAndBind(MKeyBinding source, MKeyBinding target, MApplication master)
+	{
+		// Clone step
+		copyApplicationData(source, target);
+		target.setKeySequence(source.getKeySequence());
+
+		// Add the parameters if any
+		for (MParameter p : source.getParameters())
+		{
+			MParameter cp = cloneAndBind(p, master);
+			target.getParameters().add(cp);
+		}
+
+		// Binding step (must bind the command).
+		if (source.getCommand() != null)
+		{
+			MCommand cmd = (MCommand) cache.get(source.getCommand().getElementId());
+			target.setCommand(cmd);
+		}
 
 
+	}
 
 	public void copyAndBind(MHandler source, MHandler target, MApplication master)
 	{
