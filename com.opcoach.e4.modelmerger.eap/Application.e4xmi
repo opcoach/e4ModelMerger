@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_eOTj4CoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ide.application" bindingContexts="_eOTj6SoPEeSW2M7cETpwAA">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_eOTj4SoPEeSW2M7cETpwAA" label="com.opcoach.e4.modelmerger.eap" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_eOULAyoPEeSW2M7cETpwAA">
+      <children xsi:type="advanced:Perspective" xmi:id="_eOULBCoPEeSW2M7cETpwAA">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_eOULBSoPEeSW2M7cETpwAA">
+          <children xsi:type="basic:PartStack" xmi:id="_eOULBioPEeSW2M7cETpwAA">
+            <children xsi:type="basic:Part" xmi:id="_eOULByoPEeSW2M7cETpwAA" contributionURI="bundleclass://com.opcoach.e4.modelmerger.eap/com.opcoach.e4.modelmerger.eap.parts.SamplePart" label="Sample Part"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_eOUK_CoPEeSW2M7cETpwAA" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_eOUK_SoPEeSW2M7cETpwAA" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eOUK_ioPEeSW2M7cETpwAA" label="Open" iconURI="platform:/plugin/com.opcoach.e4.modelmerger.eap/icons/sample.png" command="_eOUK8yoPEeSW2M7cETpwAA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eOUK_yoPEeSW2M7cETpwAA" label="Save" iconURI="platform:/plugin/com.opcoach.e4.modelmerger.eap/icons/save_edit.png" command="_eOUK9ioPEeSW2M7cETpwAA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eOULACoPEeSW2M7cETpwAA" label="Quit" command="_eOTj7CoPEeSW2M7cETpwAA"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_eOULASoPEeSW2M7cETpwAA" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eOULAioPEeSW2M7cETpwAA" label="About" command="_eOUK-SoPEeSW2M7cETpwAA"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_eOULCCoPEeSW2M7cETpwAA">
+      <children xsi:type="menu:ToolBar" xmi:id="_eOULCSoPEeSW2M7cETpwAA" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eOULCioPEeSW2M7cETpwAA" iconURI="platform:/plugin/com.opcoach.e4.modelmerger.eap/icons/sample.png" command="_eOUK8yoPEeSW2M7cETpwAA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eOULCyoPEeSW2M7cETpwAA" iconURI="platform:/plugin/com.opcoach.e4.modelmerger.eap/icons/save_edit.png" command="_eOUK9ioPEeSW2M7cETpwAA"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_eOUK8CoPEeSW2M7cETpwAA" elementId="com.opcoach.e4.modelmerger.eap.handler.quitCommand" contributionURI="bundleclass://com.opcoach.e4.modelmerger.eap/com.opcoach.e4.modelmerger.eap.handlers.QuitHandler" command="_eOTj7CoPEeSW2M7cETpwAA"/>
+  <handlers xmi:id="_eOUK9CoPEeSW2M7cETpwAA" elementId="com.opcoach.e4.modelmerger.eap.handler.openCommand" contributionURI="bundleclass://com.opcoach.e4.modelmerger.eap/com.opcoach.e4.modelmerger.eap.handlers.OpenHandler" command="_eOUK8yoPEeSW2M7cETpwAA"/>
+  <handlers xmi:id="_eOUK9yoPEeSW2M7cETpwAA" elementId="com.opcoach.e4.modelmerger.eap.handler.saveCommand" contributionURI="bundleclass://com.opcoach.e4.modelmerger.eap/com.opcoach.e4.modelmerger.eap.handlers.SaveHandler" command="_eOUK9ioPEeSW2M7cETpwAA"/>
+  <handlers xmi:id="_eOUK-ioPEeSW2M7cETpwAA" elementId="com.opcoach.e4.modelmerger.eap.handler.aboutCommand" contributionURI="bundleclass://com.opcoach.e4.modelmerger.eap/com.opcoach.e4.modelmerger.eap.handlers.AboutHandler" command="_eOUK-SoPEeSW2M7cETpwAA"/>
+  <bindingTables xmi:id="_eOUK8SoPEeSW2M7cETpwAA" bindingContext="_eOTj6SoPEeSW2M7cETpwAA">
+    <bindings xmi:id="_eOUK8ioPEeSW2M7cETpwAA" keySequence="M1+Q" command="_eOTj7CoPEeSW2M7cETpwAA"/>
+    <bindings xmi:id="_eOUK9SoPEeSW2M7cETpwAA" keySequence="M1+O" command="_eOUK8yoPEeSW2M7cETpwAA"/>
+    <bindings xmi:id="_eOUK-CoPEeSW2M7cETpwAA" keySequence="M1+S" command="_eOUK9ioPEeSW2M7cETpwAA"/>
+    <bindings xmi:id="_eOUK-yoPEeSW2M7cETpwAA" keySequence="M1+A" command="_eOUK-SoPEeSW2M7cETpwAA"/>
+  </bindingTables>
+  <rootContext xmi:id="_eOTj6SoPEeSW2M7cETpwAA" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_eOTj6ioPEeSW2M7cETpwAA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_eOTj6yoPEeSW2M7cETpwAA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_eOTj7CoPEeSW2M7cETpwAA" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
+  <commands xmi:id="_eOUK8yoPEeSW2M7cETpwAA" elementId="com.opcoach.e4.modelmerger.eap.open" commandName="openCommand"/>
+  <commands xmi:id="_eOUK9ioPEeSW2M7cETpwAA" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
+  <commands xmi:id="_eOUK-SoPEeSW2M7cETpwAA" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <addons xmi:id="_eOTj4ioPEeSW2M7cETpwAA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_eOTj4yoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_eOTj5CoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_eOTj5SoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_eOTj5ioPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_eOTj5yoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_eOTj6CoPEeSW2M7cETpwAA" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>

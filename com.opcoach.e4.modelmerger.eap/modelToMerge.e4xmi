@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_80HKgCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.model" bindingContexts="_NRQrcCbDEeSRMYvSC2qa8A">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_80HKgSFGEeSVAr1DhWhfjA" label="com.opcoach.e4.appli1" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_80HxpCFGEeSVAr1DhWhfjA">
+      <children xsi:type="advanced:Perspective" xmi:id="_80IYoCFGEeSVAr1DhWhfjA">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_80IYoSFGEeSVAr1DhWhfjA">
+          <children xsi:type="basic:PartStack" xmi:id="_80IYoiFGEeSVAr1DhWhfjA">
+            <children xsi:type="basic:Part" xmi:id="_80IYoyFGEeSVAr1DhWhfjA" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.parts.SamplePart" label="Sample Part"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_80HxnSFGEeSVAr1DhWhfjA" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_80HxniFGEeSVAr1DhWhfjA" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxnyFGEeSVAr1DhWhfjA" label="Open" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/sample.png" command="_80HxlCFGEeSVAr1DhWhfjA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoCFGEeSVAr1DhWhfjA" label="Save" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoSFGEeSVAr1DhWhfjA" label="Quit" command="_80HxkCFGEeSVAr1DhWhfjA"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_80HxoiFGEeSVAr1DhWhfjA" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_80HxoyFGEeSVAr1DhWhfjA" label="About"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_80IYpCFGEeSVAr1DhWhfjA">
+      <children xsi:type="menu:ToolBar" xmi:id="_80IYpSFGEeSVAr1DhWhfjA" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_80IYpiFGEeSVAr1DhWhfjA" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/sample.png" command="_80HxlCFGEeSVAr1DhWhfjA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_80IYpyFGEeSVAr1DhWhfjA" iconURI="platform:/plugin/com.opcoach.e4.appli1/icons/save_edit.png"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_80HxkSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.quitCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.QuitHandler" command="_80HxkCFGEeSVAr1DhWhfjA"/>
+  <handlers xmi:id="_80HxlSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.openCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.OpenHandler" command="_80HxlCFGEeSVAr1DhWhfjA"/>
+  <handlers xmi:id="_80HxmCFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.saveCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.SaveHandler"/>
+  <handlers xmi:id="_80HxmyFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.appli1.handler.aboutCommand" contributionURI="bundleclass://com.opcoach.e4.appli1/com.opcoach.e4.appli1.handlers.AboutHandler"/>
+  <handlers xmi:id="_FZbQ4CRwEeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.copy.handler1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.handlers.LocalCopyHandler" command="_CnDP4CRwEeSLwfZ0Ss0duQ"/>
+  <handlers xmi:id="__CitsCR3EeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.paste.handler1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.handlers.LocalPasteHandler" command="_AF3y8CR4EeSLwfZ0Ss0duQ"/>
+  <bindingTables xmi:id="_80HxkiFGEeSVAr1DhWhfjA" bindingContext="_80HKiyFGEeSVAr1DhWhfjA">
+    <bindings xmi:id="_PBAtwCezEeSMf4p74D3RQQ" elementId="com.opcoach.e4.modelmerger.test.localKeyBinding" keySequence="M1+#" command="_eEM84COREeSLwfZ0Ss0duQ">
+      <parameters xmi:id="_UFkz0CezEeSMf4p74D3RQQ" elementId="com.opcoach.e4.modelmerger.test.parameter.0" name="com.opcoach.e4.modelmerger.test.commandparameter1" value="1"/>
+      <parameters xmi:id="_Zh2PQCezEeSMf4p74D3RQQ" elementId="com.opcoach.e4.modelmerger.test.parameter.1" name="com.opcoach.e4.modelmerger.test.commandparameter2" value="2"/>
+    </bindings>
+  </bindingTables>
+  <bindingTables xmi:id="_hgbPYCezEeSMf4p74D3RQQ" elementId="com.opcoach.e4.modelmerger.test.bindingtable.0" bindingContext="_NRQrcCbDEeSRMYvSC2qa8A">
+    <bindings xmi:id="_kpeD8CezEeSMf4p74D3RQQ" elementId="com.opcoach.e4.modelmerger.test.keybinding.0" keySequence="M1+M2+T" command="_80HxkCFGEeSVAr1DhWhfjA"/>
+  </bindingTables>
+  <rootContext xmi:id="_NRQrcCbDEeSRMYvSC2qa8A" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_80HKiiFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_80HKiyFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs">
+      <children xmi:id="_AWUfACbDEeSRMYvSC2qa8A" elementId="com.opcoach.e4.modelmerger.test.wizardContext" name="In Wizard" description="In wizard for test"/>
+    </children>
+    <children xmi:id="_gGuLACbCEeSRMYvSC2qa8A" elementId="com.opcoach.e4.modelmerger.test.inOther" name="In Other" description="To test merge"/>
+  </rootContext>
+  <rootContext xmi:id="_80HKiSFGEeSVAr1DhWhfjA" elementId="com.opcoach.e4.modelmerger.test.localBindingContext" name="Local Binding at top level" description="At top level to test merge">
+    <children xmi:id="_SJK1kCbDEeSRMYvSC2qa8A" elementId="com.opcoach.e4.modelmerger.test.childContextOfTopContext" name="Child Context" description="Child Context"/>
+  </rootContext>
+  <commands xmi:id="_80HxkCFGEeSVAr1DhWhfjA" elementId="org.eclipse.ui.file.exit" commandName="Overriden Quit Command" description="Overriden"/>
+  <commands xmi:id="_80HxlCFGEeSVAr1DhWhfjA" elementId="com.opcoach.command.localWithCategory" commandName="Local Command with category" description="A local command  with category" category="_3pnoQCIaEeS_L88kIZXSPA"/>
+  <commands xmi:id="_hJGKMCIxEeS_L88kIZXSPA" elementId="com.opcoach.command.local" commandName="Local Command" description="A local command"/>
+  <commands xmi:id="_eEM84COREeSLwfZ0Ss0duQ" elementId="com.opcoach.command.localWithParameters" commandName="Local Command with parameters" description="Local Command with parameters">
+    <parameters xmi:id="_hoxP0COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter1" name="Param1" typeId="param1.typeID" optional="false"/>
+    <parameters xmi:id="_l9ud4COREeSLwfZ0Ss0duQ" elementId="com.opcoach.e4.modelmerger.test.commandparameter2" name="Param2" typeId="param2.typeID"/>
+  </commands>
+  <commands xmi:id="_CnDP4CRwEeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.copy" commandName="Copy" description="generic copy command"/>
+  <commands xmi:id="_AF3y8CR4EeSLwfZ0Ss0duQ" elementId="org.eclipse.ui.edit.paste" commandName="Paste"/>
+  <addons xmi:id="_80HKgiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_80HKgyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_80HKhCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_80HKhSFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_80HKhiFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_80HKhyFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_80HKiCFGEeSVAr1DhWhfjA" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_ilztsCIOEeS_L88kIZXSPA" elementId="com.opcoach.e4.modelmerger.test.addon.1" contributionURI="bundleclass://com.opcoach.e4.modelmerger.test/com.opcoach.e4.modelmerger.test.addons.AdditionalAddon"/>
+  <categories xmi:id="_3pnoQCIaEeS_L88kIZXSPA" elementId="com.opcoach.e4.modelmerger.test.modelCategory" name="Model Category" description="Model Category"/>
+</application:Application>
