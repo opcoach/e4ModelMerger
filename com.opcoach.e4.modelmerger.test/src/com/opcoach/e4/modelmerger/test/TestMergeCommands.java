@@ -123,30 +123,30 @@ public class TestMergeCommands extends TestMerge
 
 	}
 
-	@Test(expected = E4ModelMergeException.class)
+/*	@Test(expected = E4ModelMergeException.class)
 	public void testMergeLocalCommandWithNotCompliantParameters()
 	{
 		// In fragment we have a command with not the same number of parameters
 		// than in command found in master, while ID of commands are the same.
 
 		model = merger.loadModel("com.opcoach.e4.modelmerger.test/modelWithUncompliantCmdParameters.e4xmi");
-		
+
 		assertNotNull("Master model must  contain the local command with parameters : " + CMD_WITH_DIFFERENT_PARAMS_ID,
 				searchElementById(master.getCommands(), CMD_WITH_DIFFERENT_PARAMS_ID));
 		assertNotNull("Local model must contain the local command with parameters : " + CMD_WITH_DIFFERENT_PARAMS_ID,
 				searchElementById(model.getCommands(), CMD_WITH_DIFFERENT_PARAMS_ID));
 
-		// It must throw an exception : the two commands exists in both model, but nb of parameter is different. 
+		// It must throw an exception : the two commands exists in both model,
+		// but nb of parameter is different.
 		// Get it to check message.
 		try
 		{
-		merger.mergeModels(master, model);
-		}
-		catch (E4ModelMergeException ex)
+			merger.mergeModels(master, model);
+		} catch (E4ModelMergeException ex)
 		{
-		   System.out.println(ex.getMessage());
-		   throw ex;
+			System.out.println(ex.getMessage());
+			throw ex;
 		}
 	}
-
+*/
 }

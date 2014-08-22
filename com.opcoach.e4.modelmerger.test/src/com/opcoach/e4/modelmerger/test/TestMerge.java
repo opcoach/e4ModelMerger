@@ -13,6 +13,7 @@ import com.opcoach.e4.modelmerger.EModelLoader;
 import com.opcoach.e4.modelmerger.EModelMerger;
 import com.opcoach.e4.modelmerger.impl.E4ModelLoaderImpl;
 import com.opcoach.e4.modelmerger.impl.E4ModelMerger;
+import com.opcoach.e4.modelmerger.impl.E4ReflectiveModelMerger;
 
 /**
  * The parent class for all tests. It initializes the 2 models (master and
@@ -30,7 +31,7 @@ public class TestMerge
 	/** the source model to be merged in master (ie, the future fragment) */
 	protected MApplication model;
 
-	protected E4ModelMerger merger;
+	protected E4ReflectiveModelMerger merger;
 	protected EModelLoader loader;
 	protected EModelService ms;
 
@@ -46,7 +47,7 @@ public class TestMerge
 		master = loader.loadModel("com.opcoach.e4.modelmerger.test/master.e4xmi");
 		model = loader.loadModel("com.opcoach.e4.modelmerger.test/model.e4xmi");
 
-		merger = ContextInjectionFactory.make(E4ModelMerger.class, master.getContext());
+		merger = ContextInjectionFactory.make(E4ReflectiveModelMerger.class, master.getContext());
 
 		ms = master.getContext().get(EModelService.class);
 		master.getContext().set(EModelMerger.class, merger);

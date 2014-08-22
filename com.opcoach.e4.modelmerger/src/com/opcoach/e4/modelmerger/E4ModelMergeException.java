@@ -19,6 +19,12 @@ public class E4ModelMergeException extends RuntimeException
 		target = targetElt;
 	}
 
+	public E4ModelMergeException(String message)
+	{
+		super(message);
+
+	}
+
 	@Override
 	public String getMessage()
 	{
@@ -26,12 +32,14 @@ public class E4ModelMergeException extends RuntimeException
 
 		try
 		{
-
-			f.format("\n%15s%-80s%-80s\n", " ", "Target Object", "Source Object")
-			.format("%15s%-80s%-80s\n", " ", "-------------",  "-------------")
-					.format("%-15s%-80s%-80s\n", "Class ", target.getClass().getTypeName(), source.getClass().getTypeName())
-					.format("%-15s%-80s%-80s\n", "Id ", target.getElementId(), source.getElementId());
-
+			if ((source != null) && (target != null))
+			{
+				f.format("\n%15s%-80s%-80s\n", " ", "Target Object", "Source Object")
+						.format("%15s%-80s%-80s\n", " ", "-------------", "-------------")
+						.format("%-15s%-80s%-80s\n", "Class ", target.getClass().getTypeName(),
+								source.getClass().getTypeName())
+						.format("%-15s%-80s%-80s\n", "Id ", target.getElementId(), source.getElementId());
+			}
 			return super.getMessage() + "\n" + f.toString();
 		} finally
 		{
